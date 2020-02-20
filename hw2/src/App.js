@@ -1,81 +1,70 @@
 import React, { Component } from "react";
+import "./App.css";
+
+import CreateForm from "./components/CreateForm";
+import TodoList from "./components/TodoList";
 
 class App extends Component {
-  state = {
-    username: "",
-    password: "",
-    list: []
-  };
   id = 1;
 
-  handleChange = (e) => {
-    const { name, value } = e.target;
+  state = {
+    todos: []
+  };
+
+  // 인자값으로 text를 받고
+  // todos 배열을 가져온 뒤 값이 변화할 때마다
+  // todos에 새로운 배열을 추가함.
+  handleInsert = (text) => {
+    const { todos } = this.state;
 
     this.setState({
-      [name]: value
+      todos: todos.concat({
+        id: this.id++,
+        text,
+        checked: false
+      })
     });
   };
 
-  handleInsert = (e) => {
-    e.preventDefault();
-    const { username, password, list } = this.state;
-
+  // 인자값으로 id를 받고
+  // todos배열에 map 메소드를 사용하여 돌면서
+  // 만약 현재 id값과 배열의 id값이 같으면
+  // 스프레드 연산자 사용하여 배열을 한번 복사한뒤 체크값을 반대로 바꿔줌
+  // 아니면 그냥 리턴함
+  handleToggle = (id) => {
+    const { todos } = this.state;
     this.setState({
-      username: "",
-      password: "",
-      list: list.concat({ id: this.id++, username, password })
+      todos: todos.map((todo) => {
+        if (todo.id === id) {
+          return {
+            ...todo,
+            checked: !todo.checked
+          };
+        }
+        return todo;
+      })
     });
   };
 
+  // 인자값으로 id를 받고
+  // todos배열에서 현재 id와 같은 배열을 제외한 나머지를 리턴하여 todos배열에 넣음
   handleRemove = (id) => {
-    const { list } = this.state;
-
+    const { todos } = this.state;
     this.setState({
-      list: list.filter((e) => e.id !== id)
+      todos: todos.filter((todo) => todo.id !== id)
     });
   };
 
   render() {
-    const { username, password, list } = this.state;
-
     return (
-      <div>
-        <form onSubmit={this.handleInsert}>
-          <input
-            type="text"
-            name="username"
-            value={username}
-            placeholder="username"
-            onChange={this.handleChange}
-          />
-          <input
-            type="password"
-            name="password"
-            value={password}
-            placeholder="password"
-            onChange={this.handleChange}
-          />
-          <button type="submit">submit</button>
-        </form>
-
-        <div>
-          {username}의 비밀번호는 {password}이다.
-        </div>
-
-        <ul>
-          {list.map((e) => (
-            <li key={this.id}>
-              {e.username}({e.password})
-              <button
-                onClick={() => {
-                  this.handleRemove(e.id);
-                }}
-              >
-                delete
-              </button>
-            </li>
-          ))}
-        </ul>
+      <div className="App">
+        <h3>TODO LIST</h3>
+        <CreateForm onInsert={this.handleInsert} />
+        <TodoList
+          onToggle={this.handleToggle}
+          todos={this.state.todos}
+          onRemove={this.handleRemove}
+        />
       </div>
     );
   }

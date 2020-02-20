@@ -7,7 +7,7 @@ class TodoItem extends Component {
 
     return (
       <div
-        // "" = `` 같다 ``는 안에 변수를 넣어주고 싶을 때 쓰는것
+        // "" = `` 같음 ``는 안에 변수를 넣어주고 싶을 때 쓰는것
         className={`TodoItem ${todo.checked && "active"}`}
         onClick={() => onToggle(todo.id)}
       >
