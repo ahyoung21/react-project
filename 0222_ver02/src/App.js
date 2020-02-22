@@ -1,9 +1,16 @@
 import React, { Component } from "react";
-import SassComponent from "./SassComponent";
+import Button from "./components/Button/Button";
 
 class App extends Component {
   render() {
-    return <SassComponent />;
+    return (
+      <div>
+        <h1>hellow</h1>
+        <Button text="로그인버튼" />
+        <br />
+        <Button text="회원가입버튼" />
+      </div>
+    );
   }
 }
 
