@@ -3,13 +3,16 @@ import "./TodoItem.css";
 
 class TodoItem extends Component {
   render() {
-    const { todo, onRemove } = this.props;
+    const { todo, onRemove, onStar, score } = this.props;
 
     return (
       <div className="TodoItem">
         {/* <div className="check">&#10004;</div> */}
         <div className="text">{todo.text}</div>
-        <button className="increase">+</button>
+        <div className="starRating">{todo.score}</div>
+        <button className="increase" onClick={this.onStar}>
+          +
+        </button>
         <button className="decrease">-</button>
         <div
           className="remove"

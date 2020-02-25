@@ -4,14 +4,12 @@ import TodoItem from "./TodoItem";
 
 class TodoList extends Component {
   render() {
-    const { todos, onToggle, onRemove } = this.props;
+    const { todos, onRemove, onStar } = this.props;
 
     return (
       <div className="TodoList">
         {todos.map((todo) => {
-          return (
-            <TodoItem todo={todo} onToggle={onToggle} onRemove={onRemove} />
-          );
+          return <TodoItem todo={todo} onRemove={onRemove} onStar={onStar} />;
         })}
       </div>
     );
