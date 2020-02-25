@@ -1,42 +1,59 @@
 .TodoItem {
-	margin-bottom: 30px;
-	border-bottom: 1px dotted #bbb;
-	padding-bottom: 10px;
-	overflow: hidden;
-	font-size: 1.4rem;
-	cursor: pointer;
+  display: flex;
+  align-items: center;
+  margin-bottom: 30px;
+  border-bottom: 1px dotted #bbb;
+  padding: 0 10px 10px;
+  overflow: hidden;
+  font-size: 1.4rem;
+  cursor: pointer;
 }
 
 .TodoItem:hover .check,
 .TodoItem:hover .remove {
-	opacity: 0.5;
+  opacity: 0.5;
 }
 
 .TodoItem:last-child {
-	margin-bottom: 0;
+  margin-bottom: 0;
 }
 
 .TodoItem.active {
-	text-decoration: line-through;
-	color: #dda0dd;
+  text-decoration: line-through;
+  color: #dda0dd;
 }
 
 .TodoItem.active .check {
-	opacity: 0.8;
+  opacity: 0.8;
 }
 
 .TodoItem .check {
-	float: left;
-	opacity: 0;
+  opacity: 0;
 }
 
 .TodoItem .text {
-	margin-left: 35px;
-	overflow: hidden;
+  -webkit-box-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  display: block;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
 
 .TodoItem .remove {
-	float: right;
-	font-size: 1.2rem;
-	opacity: 0;
+  margin: 3px 0 0 10px;
+  font-size: 1.2rem;
+}
+
+.increase,
+.decrease {
+  border: 0;
+  outline: 0;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.decrease {
+  margin-left: 10px;
 }

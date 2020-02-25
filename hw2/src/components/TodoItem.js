@@ -3,15 +3,14 @@ import "./TodoItem.css";
 
 class TodoItem extends Component {
   render() {
-    const { todo, onToggle, onRemove } = this.props;
+    const { todo, onRemove } = this.props;
 
     return (
-      <div
-        // "" = `` 같음 ``는 안에 변수를 넣어주고 싶을 때 쓰는것
-        className={`TodoItem ${todo.checked && "active"}`}
-        onClick={() => onToggle(todo.id)}
-      >
-        <div className="check">&#10004;</div>
+      <div className="TodoItem">
+        {/* <div className="check">&#10004;</div> */}
+        <div className="text">{todo.text}</div>
+        <button className="increase">+</button>
+        <button className="decrease">-</button>
         <div
           className="remove"
           onClick={(e) => {
@@ -20,9 +19,8 @@ class TodoItem extends Component {
             onRemove(todo.id);
           }}
         >
-          [remove]
+          X
         </div>
-        <div className="text">{todo.text}</div>
       </div>
     );
   }

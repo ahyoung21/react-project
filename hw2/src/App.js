@@ -6,6 +6,7 @@ import TodoList from "./components/TodoList";
 
 class App extends Component {
   id = 1;
+  score = "★";
 
   state = {
     todos: []
@@ -21,7 +22,8 @@ class App extends Component {
       todos: todos.concat({
         id: this.id++,
         text,
-        checked: false
+        checked: false,
+        score: this.score++
       })
     });
   };
@@ -56,10 +58,13 @@ class App extends Component {
   };
 
   render() {
+    const type = "SONG";
+    const maxScore = 5;
+
     return (
       <div className="App">
         <h3>TODO LIST</h3>
-        <CreateForm onInsert={this.handleInsert} />
+        <CreateForm onInsert={this.handleInsert} type={type} />
         <TodoList
           onToggle={this.handleToggle}
           todos={this.state.todos}

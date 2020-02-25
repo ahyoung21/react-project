@@ -33,7 +33,7 @@ class CreateForm extends Component {
         {/* 폼으로 보낼 때 handleSubmit 함수 실행 */}
         <form className="form_container" onSubmit={this.handleSubmit}>
           <input
-            placeholder="something to do?"
+            placeholder={"add a(n) " + this.props.type}
             value={input}
             onChange={this.handleChange}
           />
