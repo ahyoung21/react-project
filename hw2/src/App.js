@@ -6,11 +6,12 @@ import TodoList from "./components/TodoList";
 
 class App extends Component {
   id = 1;
-  i = 1;
+  i = 2;
 
   state = {
     todos: [],
-    score: ""
+    score: "★",
+    maxScore: 5
   };
 
   // 인자값으로 text를 받고
@@ -40,24 +41,23 @@ class App extends Component {
 
   handleIncrease = () => {
     const score = this.state;
-    const maxScore = 5;
 
     this.setState({
-      score: score.length < maxScore && "★".repeat(this.i++)
+      score: "★".repeat(this.i++)
     });
   };
 
   handleDecrease = () => {
     const score = this.state;
-    const maxScore = 5;
 
     this.setState({
-      score: "★".repeat(this.i--)
+      score: score.subtr(0, score.length - 1)
     });
   };
 
   render() {
     const type = "SONG";
+    const { score, maxScore } = this.state;
 
     return (
       <div className="App">
@@ -69,8 +69,10 @@ class App extends Component {
           onStar={this.handleIncrease}
         />
         <div>{this.state.score}</div>
-        <button onClick={this.handleIncrease}>+</button>
-        <button onClick={this.handleDecrease}>-</button>
+        <button onClick={score.length < maxScore && this.handleIncrease}>
+          +
+        </button>
+        <button onClick={score.length > 1 && this.handleDecrease}>-</button>
       </div>
     );
   }
