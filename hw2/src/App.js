@@ -6,7 +6,7 @@ import TodoList from "./components/TodoList";
 
 class App extends Component {
   id = 1;
-  i = 2;
+  i = 1;
 
   state = {
     todos: [],
@@ -40,18 +40,19 @@ class App extends Component {
   };
 
   handleIncrease = () => {
-    const score = this.state;
+    const { score } = this.state;
 
     this.setState({
-      score: "★".repeat(this.i++)
+      score: "★".repeat(++this.i)
     });
   };
 
   handleDecrease = () => {
-    const score = this.state;
+    const { score } = this.state;
 
     this.setState({
-      score: score.subtr(0, score.length - 1)
+      score: score.slice(0, -1)
+      // score: "★".repeat(--this.i)
     });
   };
 
