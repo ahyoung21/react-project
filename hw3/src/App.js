@@ -65,7 +65,7 @@ class App extends Component {
         <button onClick={this.handleLotto}>Lotto</button>
         <input
           name="birthday"
-          type="data"
+          type="date"
           value={birthday}
           onChange={this.handleInsert}
         />

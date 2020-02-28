@@ -10,8 +10,21 @@ class App extends Component {
 
   state = {
     todos: [],
-    score: "★",
+    // score: "★",
     maxScore: 5
+  };
+
+  handleIncrease = (score) => {
+    // const { score } = this.state;
+    this.setState({
+      score: "★".repeat(++this.i)
+    });
+  };
+
+  handleDecrease = (score) => {
+    this.setState({
+      score: "★".repeat(--this.i)
+    });
   };
 
   // 인자값으로 text를 받고
@@ -23,9 +36,10 @@ class App extends Component {
     this.setState({
       todos: todos.concat({
         id: this.id++,
+        // i: this.i++,
         text,
         checked: false,
-        score: this.score++
+        score: "★"
       })
     });
   };
@@ -39,26 +53,9 @@ class App extends Component {
     });
   };
 
-  handleIncrease = () => {
-    const { score } = this.state;
-
-    this.setState({
-      score: "★".repeat(++this.i)
-    });
-  };
-
-  handleDecrease = () => {
-    const { score } = this.state;
-
-    this.setState({
-      score: score.slice(0, -1)
-      // score: "★".repeat(--this.i)
-    });
-  };
-
   render() {
     const type = "SONG";
-    const { score, maxScore } = this.state;
+    // const { score, maxScore } = this.state;
 
     return (
       <div className="App">
@@ -66,14 +63,17 @@ class App extends Component {
         <CreateForm onInsert={this.handleInsert} type={type} />
         <TodoList
           todos={this.state.todos}
+          // score={this.state.score}
+          maxScore={this.state.maxScore}
           onRemove={this.handleRemove}
-          onStar={this.handleIncrease}
+          onIncrease={this.handleIncrease}
+          onDecrease={this.handleDecrease}
         />
-        <div>{this.state.score}</div>
+        {/* <div>{this.state.score}</div>
         <button onClick={score.length < maxScore && this.handleIncrease}>
           +
         </button>
-        <button onClick={score.length > 1 && this.handleDecrease}>-</button>
+        <button onClick={score.length > 1 && this.handleDecrease}>-</button> */}
       </div>
     );
   }
