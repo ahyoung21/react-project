@@ -10,20 +10,34 @@ class App extends Component {
 
   state = {
     todos: [],
-    // score: "★",
     maxScore: 5
   };
 
-  handleIncrease = (score) => {
-    // const { score } = this.state;
+  handleIncrease = (id) => {
+    const { todos } = this.state;
     this.setState({
-      score: "★".repeat(++this.i)
+      todos: todos.map((todo) => {
+        if (todo.id === id) {
+          return {
+            ...todo,
+            score: "★".repeat(++this.i)
+          };
+        }
+      })
     });
   };
 
-  handleDecrease = (score) => {
+  handleDecrease = (id) => {
+    const { todos } = this.state;
     this.setState({
-      score: "★".repeat(--this.i)
+      todos: todos.map((todo) => {
+        if (todo.id === id) {
+          return {
+            ...todo,
+            score: "★".repeat(--this.i)
+          };
+        }
+      })
     });
   };
 
@@ -36,9 +50,7 @@ class App extends Component {
     this.setState({
       todos: todos.concat({
         id: this.id++,
-        // i: this.i++,
         text,
-        checked: false,
         score: "★"
       })
     });
@@ -55,7 +67,6 @@ class App extends Component {
 
   render() {
     const type = "SONG";
-    // const { score, maxScore } = this.state;
 
     return (
       <div className="App">
@@ -69,11 +80,6 @@ class App extends Component {
           onIncrease={this.handleIncrease}
           onDecrease={this.handleDecrease}
         />
-        {/* <div>{this.state.score}</div>
-        <button onClick={score.length < maxScore && this.handleIncrease}>
-          +
-        </button>
-        <button onClick={score.length > 1 && this.handleDecrease}>-</button> */}
       </div>
     );
   }

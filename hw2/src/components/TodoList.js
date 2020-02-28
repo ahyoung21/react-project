@@ -4,14 +4,7 @@ import TodoItem from "./TodoItem";
 
 class TodoList extends Component {
   render() {
-    const {
-      todos,
-      // score,
-      maxScore,
-      onRemove,
-      onIncrease,
-      onDecrease
-    } = this.props;
+    const { todos, maxScore, onRemove, onIncrease, onDecrease } = this.props;
 
     return (
       <div className="TodoList">
@@ -20,7 +13,6 @@ class TodoList extends Component {
             <TodoItem
               key={todo.id}
               todo={todo}
-              // score={score}
               onRemove={onRemove}
               maxScore={maxScore}
               onIncrease={onIncrease}
