@@ -3,22 +3,23 @@ import "./TodoItem.css";
 
 class TodoItem extends Component {
   render() {
-    const { todo, maxScore, onRemove, onIncrease, onDecrease } = this.props;
+    const {
+      todo,
+      maxScore,
+      onRemove,
+      onIncrease,
+      onDecrease,
+      score
+    } = this.props;
 
     return (
       <div className="TodoItem">
         <div className="text">{todo.text}</div>
-        <div className="starRating">{todo.score}</div>
-        <button
-          className="increase"
-          onClick={() => todo.score.length < maxScore && onIncrease(todo.id)}
-        >
+        <div className="starRating">{"*".repeat(todo.score)}</div>
+        <button className="increase" onClick={() => onIncrease(todo.id)}>
           +
         </button>
-        <button
-          className="decrease"
-          onClick={() => todo.score.length > 1 && onDecrease(todo.id)}
-        >
+        <button className="decrease" onClick={() => onDecrease(todo.id)}>
           -
         </button>
         <div

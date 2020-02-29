@@ -1,0 +1,19 @@
+.leagueList-wrapper {
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+}
+
+.leagueList {
+  margin-right: 10px;
+  margin-bottom: 30px;
+  cursor: pointer;
+}
+
+.leagueList-wrapper > :first-child .league {
+  padding-left: 0;
+}
+
+.leagueList-wrapper > :last-child .league {
+  padding-right: 0;
+}

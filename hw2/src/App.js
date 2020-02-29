@@ -15,12 +15,13 @@ class App extends Component {
 
   handleIncrease = (id) => {
     const { todos } = this.state;
+    console.log("iamcalled");
     this.setState({
       todos: todos.map((todo) => {
         if (todo.id === id) {
           return {
             ...todo,
-            score: "★".repeat(++this.i)
+            score: todo.score + 1
           };
         }
       })
@@ -34,7 +35,7 @@ class App extends Component {
         if (todo.id === id) {
           return {
             ...todo,
-            score: "★".repeat(--this.i)
+            score: todo.score - 1
           };
         }
       })
@@ -51,7 +52,7 @@ class App extends Component {
       todos: todos.concat({
         id: this.id++,
         text,
-        score: "★"
+        score: 1
       })
     });
   };

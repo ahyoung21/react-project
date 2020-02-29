@@ -1,26 +1,31 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import Main from "./Main";
+import Sub from "./Sub";
+import { Switch, Route, Link } from "react-router-dom";
+import Profiles from "./Profiles";
 
-function App() {
+const App = ({ children }) => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <ul>
+        <li>
+          <Link to="/">main으로</Link>
+        </li>
+        <li>
+          <Link to="/sub">sub으로</Link>
+        </li>
+        <li>
+          <Link to="/profiles">profile으로</Link>
+        </li>
+      </ul>
+      <Switch>
+        <Route exact component={Main} path="/" />
+        <Route component={Sub} path="/sub" />
+        <Route component={Profiles} path="/profiles" />
+        <Route render={() => <div>404 not found</div>} />
+      </Switch>
     </div>
   );
-}
+};
 
 export default App;
