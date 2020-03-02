@@ -15,7 +15,7 @@ class App extends Component {
 
   handleIncrease = (id) => {
     const { todos } = this.state;
-    console.log("iamcalled");
+
     this.setState({
       todos: todos.map((todo) => {
         if (todo.id === id) {

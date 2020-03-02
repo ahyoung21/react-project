@@ -15,11 +15,17 @@ class TodoItem extends Component {
     return (
       <div className="TodoItem">
         <div className="text">{todo.text}</div>
-        <div className="starRating">{"*".repeat(todo.score)}</div>
-        <button className="increase" onClick={() => onIncrease(todo.id)}>
+        <div className="starRating">{"★".repeat(todo.score)}</div>
+        <button
+          className="increase"
+          onClick={() => todo.score < maxScore && onIncrease(todo.id)}
+        >
           +
         </button>
-        <button className="decrease" onClick={() => onDecrease(todo.id)}>
+        <button
+          className="decrease"
+          onClick={() => todo.score > 1 && onDecrease(todo.id)}
+        >
           -
         </button>
         <div
