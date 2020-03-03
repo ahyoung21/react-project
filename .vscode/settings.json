@@ -7,5 +7,6 @@
   "prettier.tabWidth": 2,
   "editor.tabSize": 2,
   "prettier.singleQuote": true,
-  "prettier.semi": true
+  "prettier.semi": true,
+  "git.ignoreLimitWarning": true
 }
