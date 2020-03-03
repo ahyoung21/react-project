@@ -3,8 +3,9 @@
     "*.js": "javascriptreact"
   },
   "editor.formatOnSave": true,
-  "prettier.arrowParens": "always",
   "prettier.printWidth": 80,
   "prettier.tabWidth": 2,
-  "editor.tabSize": 2
+  "editor.tabSize": 2,
+  "prettier.singleQuote": true,
+  "prettier.semi": true
 }

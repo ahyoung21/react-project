@@ -1,27 +1,27 @@
-import React, { Component } from "react";
-import produce from "immer";
-import "./style.css";
+import React, { Component } from 'react';
+import produce from 'immer';
+import './style.css';
 
 // yarn add immer
 class App extends Component {
   id = 2;
   state = {
-    input: "",
+    input: '',
     todos: [
       {
         id: 1,
-        text: "제목1",
+        text: '제목1',
         done: false
       },
       {
         id: 2,
-        text: "제목2",
+        text: '제목2',
         done: false
       }
     ]
   };
 
-  handleChange = (e) => {
+  handleChange = e => {
     const { value } = e.target;
     this.setState({
       input: value
@@ -30,30 +30,30 @@ class App extends Component {
 
   handleInsert = () => {
     this.setState(
-      produce((draft) => {
+      produce(draft => {
         draft.todos.push({
           id: ++this.id,
           text: this.state.input,
           done: false
         });
-        draft.input = "";
+        draft.input = '';
       })
     );
   };
 
-  handleToggle = (id) => {
+  handleToggle = id => {
     this.setState(
-      produce((draft) => {
-        const todo = draft.todos.find((todo) => todo.id === id);
+      produce(draft => {
+        const todo = draft.todos.find(todo => todo.id === id);
         todo.done = !todo.done;
       })
     );
   };
 
-  handleRemove = (id) => {
+  handleRemove = id => {
     this.setState(
-      produce((draft) => {
-        const index = draft.todos.findIndex((todo) => todo.id === id);
+      produce(draft => {
+        const index = draft.todos.findIndex(todo => todo.id === id);
         draft.todos.splice(index, 1);
       })
     );
@@ -67,15 +67,15 @@ class App extends Component {
           <button onClick={this.handleInsert}>추가</button>
         </div>
         <ul>
-          {this.state.todos.map((todo) => (
+          {this.state.todos.map(todo => (
             <li
               key={todo.id}
               style={{
-                textDecoration: todo.done ? "line-through" : "none"
+                textDecoration: todo.done ? 'line-through' : 'none'
               }}
               onClick={() => this.handleToggle(todo.id)}
               // 우클릭
-              onContextMenu={(e) => {
+              onContextMenu={e => {
                 e.preventDefault();
                 this.handleRemove(todo.id);
               }}
