@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import '../App.css';
+import '../src/App.css';
 
-import CreateForm from './CreateForm';
-import TodoList from './TodoList';
+import CreateForm from './components/CreateForm';
+import TodoList from './components/TodoList';
 
-class App extends Component {
+class AppNum extends Component {
   id = 1;
   i = 0.0;
 
@@ -25,6 +25,7 @@ class App extends Component {
             score: todo.score + 0.1
           };
         }
+        return todo;
       })
     });
   };
@@ -39,6 +40,7 @@ class App extends Component {
             score: todo.score - 0.1
           };
         }
+        return todo;
       })
     });
   };
@@ -105,4 +107,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default AppNum;

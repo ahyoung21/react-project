@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './TodoList.css';
-// import TodoItem from './TodoItem';
+import TodoItem from './TodoItem';
 import TodoItemNum from './TodoItemNum';
 
 class TodoList extends Component {
@@ -18,6 +18,15 @@ class TodoList extends Component {
       <div className="TodoList">
         {todos.map(todo => {
           return (
+            // <TodoItem
+            //   key={todo.id}
+            //   todo={todo}
+            //   onRemove={onRemove}
+            //   maxScore={maxScore}
+            //   onIncrease={onIncrease}
+            //   onDecrease={onDecrease}
+            //   onToggle={onToggle}
+            // />
             <TodoItemNum
               key={todo.id}
               todo={todo}
