@@ -8,12 +8,10 @@ import rootReducer from './store/modules';
 // 우리 리액트 앱이랑 redux store랑 연동하기 위해 Provider를 가져옴
 import { Provider } from 'react-redux';
 
-const store = createStore(
-  rootReducer,
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-);
+const devTools =
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__();
 
-console.log(store.getState());
+const store = createStore(rootReducer, devTools);
 
 // 액션, 스토어안에 들어갈 상태값, 그 상태값을 어떻게 변화시킬지에 대한 리듀서
 
