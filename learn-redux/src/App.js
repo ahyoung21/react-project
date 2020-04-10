@@ -4,6 +4,7 @@ import './App.css';
 import Counter from './components/Counter';
 import Palette from './components/Palette';
 import PaletteContainer from './containers/PaletteContainer';
+import CounterContainer from './containers/CounterContainer';
 import WaitingList from './components/WaitingList';
 
 class App extends Component {
@@ -11,7 +12,7 @@ class App extends Component {
     return (
       <div className="App">
         <PaletteContainer />
-        <Counter value={0} color="red" />
+        <CounterContainer />
         <WaitingList />
       </div>
     );

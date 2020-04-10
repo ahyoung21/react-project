@@ -1,16 +1,16 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 
 class App extends Component {
   state = {
-    username: "",
-    password: "",
+    username: '',
+    password: '',
     list: []
   };
 
   id = 1;
   usernameInput = React.createRef();
 
-  handleChange = (e) => {
+  handleChange = e => {
     const { value, name } = e.target;
 
     this.setState({
@@ -18,13 +18,13 @@ class App extends Component {
     });
   };
 
-  handleInsert = (e) => {
+  handleInsert = e => {
     e.preventDefault();
     const { username, password, list } = this.state;
 
     this.setState({
-      username: "",
-      password: "",
+      username: '',
+      password: '',
       list: list.concat({ id: this.id++, username, password })
     });
 
@@ -58,7 +58,7 @@ class App extends Component {
           {username}은 {password}이다
         </div>
         <ul>
-          {list.map((item) => (
+          {list.map(item => (
             <li key={item.id}>
               {item.username}({item.password})
             </li>

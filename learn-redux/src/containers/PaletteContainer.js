@@ -27,6 +27,7 @@ const mapStateToProps = state => ({
 
 // props로 넣어줄 액션 생성함수
 const mapDispatchToProps = dispatch => ({
+  // actionCreator: (...params) => dispatch(actionCreator(...params)
   changeColor: color => dispatch(changeColor(color))
 });
 
